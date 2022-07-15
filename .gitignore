@@ -52,3 +52,6 @@ Mkfile.old
 dkms.conf
 *.testlog
 *.manifest
+*.v2
+/bin
+/obj
