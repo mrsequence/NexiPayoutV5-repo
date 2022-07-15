@@ -50,21 +50,21 @@ namespace NexiPayout.Tests
         }
 
 
-        [Test]
-        public void VerifyThatTheAMOUNTIsAnIntegerValueWhenGettingPayoutDetails()
-        {
-            SetupCallToV1();
-            payoutDetailResponse = manager.GetPayoutDetailById(payoutResponse.payouts.ElementAt(1).id);
-            Assert.IsTrue(payoutDetailResponse.amount is int);
-        }
-
-        [Test]
-        public void ValidateThatCurrencyHasRIghtFormat()
-        {
-            SetupCallToV1();
-            payoutDetailResponse = manager.GetPayoutDetailById(payoutResponse.payouts.ElementAt(1).id);
-            Assert.That(payoutDetailResponse.currency.Length == 3);
-        }
+        //[Test]
+        //public void VerifyThatTheAMOUNTIsAnIntegerValueWhenGettingPayoutDetails()
+        //{
+        //    SetupCallToV1();
+        //    payoutDetailResponse = manager.GetPayoutDetailById(payoutResponse.payouts.ElementAt(1).id);
+        //    Assert.IsTrue(payoutDetailResponse.amount is int);
+        //}
+        //
+        //[Test]
+        //public void ValidateThatCurrencyHasRIghtFormat()
+        //{
+        //    SetupCallToV1();
+        //    payoutDetailResponse = manager.GetPayoutDetailById(payoutResponse.payouts.ElementAt(1).id);
+        //    Assert.That(payoutDetailResponse.currency.Length == 3);
+        //}
 
         public void GetUserPayoutDetails(string endpoint)
         {
