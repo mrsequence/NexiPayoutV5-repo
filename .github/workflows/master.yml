@@ -22,5 +22,5 @@ jobs:
     - name: Build
       run: dotnet build NexiPayout.Framework/NexiPayout.Framework.sln
     - name: Test
-      run: dotnet test NexiPayout.Framework/NexiPayout.Tests --verbosity normal
+      run: dotnet test NexiPayout.Framework/NexiPayout.Tests.csproj --verbosity normal
 
