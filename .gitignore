@@ -53,5 +53,6 @@ dkms.conf
 *.testlog
 *.manifest
 *.v2
-/bin
-/obj
+bin/
+obj/
+*.tmp
