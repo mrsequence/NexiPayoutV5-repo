@@ -18,9 +18,9 @@ jobs:
       with:
         dotnet-version: 5.0.*
     - name: restore-nuget-packages
-      run: nuget restore NexiPayout.Framework/NexiPayout.Framework.sln
+      run: nuget restore NexiPayout.Framework
     - name: Build
-      run: dotnet build NexiPayout.Framework/NexiPayout.Framework.sln
+      run: dotnet build NexiPayout.Framework
     - name: Test
-      run: dotnet test NexiPayout.Framework/NexiPayout.Framework.sln --verbosity normal
+      run: dotnet test NexiPayout.Framework
 
