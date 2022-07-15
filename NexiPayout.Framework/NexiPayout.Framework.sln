@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexiPayout.Framework", "NexiPayout.Framework\NexiPayout.Framework.csproj", "{08CCE52C-E190-4E75-B1D7-EA2A20D8CA90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexiPayout.Tests", "NexiPayout.Tests\NexiPayout.Tests.csproj", "{72D2C622-9B05-43AF-8855-975C214F0D74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08CCE52C-E190-4E75-B1D7-EA2A20D8CA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CCE52C-E190-4E75-B1D7-EA2A20D8CA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CCE52C-E190-4E75-B1D7-EA2A20D8CA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CCE52C-E190-4E75-B1D7-EA2A20D8CA90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D2C622-9B05-43AF-8855-975C214F0D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D2C622-9B05-43AF-8855-975C214F0D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D2C622-9B05-43AF-8855-975C214F0D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D2C622-9B05-43AF-8855-975C214F0D74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FC52E7B-DD2C-463F-8834-028865B6389B}
+	EndGlobalSection
+EndGlobal

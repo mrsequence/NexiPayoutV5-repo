@@ -1,0 +1,12 @@
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\NexiPayout.Framework.csproj.AssemblyReference.cache
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\NexiPayout.Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\NexiPayout.Framework.AssemblyInfoInputs.cache
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\NexiPayout.Framework.AssemblyInfo.cs
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\NexiPayout.Framework.csproj.CoreCompileInputs.cache
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\bin\Debug\net5.0\NexiPayout.Framework.deps.json
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\bin\Debug\net5.0\NexiPayout.Framework.dll
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\bin\Debug\net5.0\NexiPayout.Framework.pdb
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\NexiPayout.Framework.dll
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\refint\NexiPayout.Framework.dll
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\NexiPayout.Framework.pdb
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Framework\obj\Debug\net5.0\ref\NexiPayout.Framework.dll
