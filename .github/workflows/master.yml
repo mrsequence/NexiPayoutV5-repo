@@ -20,7 +20,7 @@ jobs:
     - name: restore-nuget-packages
       run: nuget restore NexiPayout.Framework/NexiPayout.Framework.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build NexiPayout.Framework/NexiPayout.Framework.sln
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
