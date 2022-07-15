@@ -1,12 +1,16 @@
-﻿using NexiPayout.Clients;
+﻿using Newtonsoft.Json;
+using NexiPayout.Clients;
 using NexiPayout.Framework.Interfaces;
 using NexiPayout.Framework.Logging;
+using NexiPayout.Framework.Models.Config;
+using NexiPayout.Framework.Utilities;
 using NexiPayout.Helpers;
 using NexiPayout.Models.Payouts;
 using NexiPayout.Utilities;
 using Serilog.Events;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace NexiPayout.ClientManagers
 {
@@ -16,9 +20,12 @@ namespace NexiPayout.ClientManagers
         private ClientHelper<PayoutResponse> payoutResponseClientHelper;
         private ClientHelper<PayoutDetailResponse> payoutDetailResponseClientHelper;
         //private readonly ILogger _logger;
-
+        public readonly PayoutEnv _env;
         public PayoutManager()
         {
+            _env = JsonConvert.DeserializeObject<PayoutEnv>(FileUtility.GetFileContent(
+              FileUtility.GetFullFilePath("payoutenv.json")));
+
         }
         public RestSharpClient PayoutClient { get { return _payoutClient; } set { _payoutClient = value; } }
         public PayoutResponse GetAllPayouts(string endpoint)
@@ -26,9 +33,7 @@ namespace NexiPayout.ClientManagers
             //_logger.Write(LogEventLevel.Information, "Retrieving all payouts");
             try
             {
-                string baseUrl = ConfigurationsUtility.GetSetting("baseUrl");
-                _payoutClient = new RestSharpClient(baseUrl, endpoint);
-
+                _payoutClient = new RestSharpClient(_env.BaseUrl, endpoint);
                 Dictionary<string, string> headers = new Dictionary<string, string>()
             {
                 { "Accept", "application/Json" }
@@ -49,10 +54,9 @@ namespace NexiPayout.ClientManagers
 
         public PayoutDetailResponse GetPayoutDetailById(string id)
         {
-            string baseUrl = ConfigurationsUtility.GetSetting("baseUrl");
             string endpoint = "report/v1/payouts";
             endpoint = ApiUtility.ConstructEndPointParams( endpoint,new Dictionary<string, string>() { { "id", id } });
-            _payoutClient = new RestSharpClient(baseUrl, endpoint);
+            _payoutClient = new RestSharpClient(_env.BaseUrl, endpoint);
             Dictionary<string, string> headers = new Dictionary<string, string>()
             {
                 { "Accept", "application/Json" }
