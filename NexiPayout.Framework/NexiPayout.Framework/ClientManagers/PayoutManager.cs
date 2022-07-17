@@ -29,7 +29,7 @@ namespace NexiPayout.ClientManagers
         public RestSharpClient PayoutClient { get { return _payoutClient; } set { _payoutClient = value; } }
         public PayoutResponse GetAllPayouts(string endpoint)
         {
-            _logger.Write(LogEventLevel.Information, "Retrieving all payouts");
+            _logger.Write(LogEventLevel.Information, "[" + this.GetType().Name + "] Retrieving all payouts");
             try
             {
                 _payoutClient = new RestSharpClient(_env.BaseUrl, endpoint, _logger);
@@ -45,8 +45,8 @@ namespace NexiPayout.ClientManagers
             }
             catch (Exception ex)
             {
-                _logger.Write(LogEventLevel.Error, "Erro while retrieving Payouts with endpoint: " + endpoint);
-                _logger.Debug(ex, "Encountered error when getting all Payments " + ex.Message);
+                _logger.Write(LogEventLevel.Error, "[" + this.GetType().Name + "] Erro while retrieving Payouts with endpoint: " + endpoint);
+                _logger.Debug(ex, "[" + this.GetType().Name + "] Encountered error when getting all Payments " + ex.Message);
                 throw;
             }
           
@@ -73,8 +73,8 @@ namespace NexiPayout.ClientManagers
             catch (Exception ex)
             {
 
-                _logger.Write(LogEventLevel.Error, "Erro while retrieving PayoutDetails with endpoint: " + endpoint + " and id: " + id);
-                _logger.Debug(ex, "Encountered error when getting all Payments " + ex.Message);
+                _logger.Write(LogEventLevel.Error, "[" + this.GetType().Name + "] Erro while retrieving PayoutDetails with endpoint: " + endpoint + " and id: " + id);
+                _logger.Debug(ex, "[" + this.GetType().Name + "] Encountered error when getting all Payments " + ex.Message);
                 throw;
             }
         }
