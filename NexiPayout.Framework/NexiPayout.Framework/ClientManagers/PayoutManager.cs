@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NexiPayout.Clients;
 using NexiPayout.Framework.Interfaces;
-using NexiPayout.Framework.Logging;
 using NexiPayout.Framework.Models.Config;
 using NexiPayout.Framework.Utilities;
 using NexiPayout.Helpers;
@@ -10,7 +9,6 @@ using NexiPayout.Utilities;
 using Serilog.Events;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace NexiPayout.ClientManagers
 {
@@ -19,10 +17,11 @@ namespace NexiPayout.ClientManagers
         private RestSharpClient _payoutClient;
         private ClientHelper<PayoutResponse> payoutResponseClientHelper;
         private ClientHelper<PayoutDetailResponse> payoutDetailResponseClientHelper;
-        //private readonly ILogger _logger;
+        private readonly ILogger _logger;
         public readonly PayoutEnv _env;
-        public PayoutManager()
+        public PayoutManager(ILogger logger)
         {
+            this._logger = logger;
             _env = JsonConvert.DeserializeObject<PayoutEnv>(FileUtility.GetFileContent(
               FileUtility.GetFullFilePath("payoutenv.json")));
 
@@ -30,14 +29,15 @@ namespace NexiPayout.ClientManagers
         public RestSharpClient PayoutClient { get { return _payoutClient; } set { _payoutClient = value; } }
         public PayoutResponse GetAllPayouts(string endpoint)
         {
-            //_logger.Write(LogEventLevel.Information, "Retrieving all payouts");
+            _logger.Write(LogEventLevel.Information, "Retrieving all payouts");
             try
             {
-                _payoutClient = new RestSharpClient(_env.BaseUrl, endpoint);
+                _payoutClient = new RestSharpClient(_env.BaseUrl, endpoint, _logger);
                 Dictionary<string, string> headers = new Dictionary<string, string>()
-            {
-                { "Accept", "application/Json" }
-            };
+                {
+                    { "Accept", "application/Json" }
+                 };
+
                 _payoutClient.CreateGetRequest(headers);
                 _payoutClient.ExecuteRequest();
                 payoutResponseClientHelper = new ClientHelper<PayoutResponse>();
@@ -45,8 +45,8 @@ namespace NexiPayout.ClientManagers
             }
             catch (Exception ex)
             {
-                //_logger.Write(LogEventLevel.Error, "Erro while retrueve endpoint: " + endpoint);
-                //_logger.Debug(ex, "Encountered error when getting all Payments " + ex.Message);
+                _logger.Write(LogEventLevel.Error, "Erro while retrieving Payouts with endpoint: " + endpoint);
+                _logger.Debug(ex, "Encountered error when getting all Payments " + ex.Message);
                 throw;
             }
           
@@ -54,17 +54,29 @@ namespace NexiPayout.ClientManagers
 
         public PayoutDetailResponse GetPayoutDetailById(string id)
         {
-            string endpoint = "report/v1/payouts";
-            endpoint = ApiUtility.ConstructEndPointParams( endpoint,new Dictionary<string, string>() { { "id", id } });
-            _payoutClient = new RestSharpClient(_env.BaseUrl, endpoint);
-            Dictionary<string, string> headers = new Dictionary<string, string>()
+                string endpoint = "report/v1/payouts";
+            try
             {
-                { "Accept", "application/Json" }
-            };
-            _payoutClient.CreateGetRequest(headers);
-            _payoutClient.ExecuteRequest();
-            payoutDetailResponseClientHelper = new ClientHelper<PayoutDetailResponse>();
-            return payoutDetailResponseClientHelper.DeserializeContent(_payoutClient.Response.Content);
+                _logger.Write(LogEventLevel.Information, "Retrieving payoutDetails By Id");
+
+                endpoint = ApiUtility.ConstructEndPointParams(endpoint, new Dictionary<string, string>() { { "id", id } });
+                _payoutClient = new RestSharpClient(_env.BaseUrl, endpoint, _logger);
+                Dictionary<string, string> headers = new Dictionary<string, string>()
+                {
+                    { "Accept", "application/Json" }
+                };
+                _payoutClient.CreateGetRequest(headers);
+                _payoutClient.ExecuteRequest();
+                payoutDetailResponseClientHelper = new ClientHelper<PayoutDetailResponse>();
+                return payoutDetailResponseClientHelper.DeserializeContent(_payoutClient.Response.Content);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.Write(LogEventLevel.Error, "Erro while retrieving PayoutDetails with endpoint: " + endpoint + " and id: " + id);
+                _logger.Debug(ex, "Encountered error when getting all Payments " + ex.Message);
+                throw;
+            }
         }
     }
 }

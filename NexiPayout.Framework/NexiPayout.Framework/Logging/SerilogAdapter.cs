@@ -1,5 +1,4 @@
-﻿using NexiPayout.Framework.Interfaces;
-using Serilog;
+﻿using Serilog;
 using Serilog.Events;
 using System;
 
@@ -9,25 +8,41 @@ namespace NexiPayout.Framework.Logging
     {
         public bool IsDebugEnabled => Log.IsEnabled(LogEventLevel.Debug);
         public bool IsInformationEnabled => Log.IsEnabled(LogEventLevel.Information);
+        public bool IsErrorEnabled => Log.IsEnabled(LogEventLevel.Error);
 
         public void Debug(Exception exception, string messageTemplate)
         {
-            Debug(exception, messageTemplate);
+            Log.Debug(exception, messageTemplate);
         }
 
         public void Debug<T>(Exception exception, string messageTemplate, T propertyValue)
         {
-            Debug(exception, messageTemplate, propertyValue);
+            Log.Debug(exception, messageTemplate, propertyValue);
         }
 
         public void Write(LogEventLevel level, string messageTemplate)
         {
-            Write(level, messageTemplate);
+            Log.Write(level, messageTemplate);
         }
 
         public void Write<T>(LogEventLevel level, string messageTemplate, T propertyValue)
         {
-            Write(level, messageTemplate, propertyValue);
+            Log.Write(level, messageTemplate, propertyValue);
+        }
+
+        public void WriteInformation(string messageTemplate)
+        {
+            Log.Write(LogEventLevel.Information, messageTemplate);
+        }
+
+        public void Error(Exception exception, string messageTemplate)
+        {
+            Log.Error(exception, messageTemplate);
+        }
+
+        public void Error<T>(Exception exception, string messageTemplate, T propertyValue)
+        {
+            Log.Error(exception, messageTemplate, propertyValue);
         }
     }
 }

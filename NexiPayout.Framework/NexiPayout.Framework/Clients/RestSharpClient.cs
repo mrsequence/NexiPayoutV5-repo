@@ -1,5 +1,7 @@
 ﻿using NexiPayout.CustomTypes.Enums;
+using NexiPayout.Framework.Interfaces;
 using RestSharp;
+using Serilog.Events;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +20,7 @@ namespace NexiPayout.Clients
         private RestRequest _request;
         private string _baseUrl;
         private string _fullUrl;
+        private readonly ILogger _logger;
 
         public IRestResponse Response { get { return _response; } set { _response = value; } }
         public RestRequest Request { get { return _request; } set { _request = value; } }
@@ -25,8 +28,9 @@ namespace NexiPayout.Clients
         public string BaseUrl { get { return _baseUrl; } set { _baseUrl = value; } }
         public string FullUrl { get { return _fullUrl; } set { _fullUrl = value; } }
 
-        public RestSharpClient(string baseUrl, string endpoint)
+        public RestSharpClient(string baseUrl, string endpoint, ILogger logger)
         {
+            this._logger = logger;
             _baseUrl = baseUrl;
             string url = Path.Combine(baseUrl, endpoint);   
             _fullUrl = url;
@@ -37,7 +41,20 @@ namespace NexiPayout.Clients
 
         public HttpStatusCode GetStatusCode()
         {
-            return _response.StatusCode;
+            try
+            {
+                _logger.Write(LogEventLevel.Information, "[" + this.GetType().Name + "] Retrieving response statuscode");
+
+                return _response.StatusCode;
+            }
+            catch (Exception ex)
+            {
+
+                _logger.Write(LogEventLevel.Error, "Error while retrieving status code");
+                _logger.Debug(ex, "Encountered error when getting status code " + ex.Message);
+                throw;
+            }
+           
         }
 
 
@@ -45,12 +62,14 @@ namespace NexiPayout.Clients
         {
             try
             {
+                _logger.Write(LogEventLevel.Information, "[" + this.GetType().Name + "] Executing request");
                 _response = _client.Execute(_request);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                _logger.Write(LogEventLevel.Error, "Error while excuting request " + _request);
+                _logger.Debug(ex, "Encountered error when executing request " + ex.Message);
                 throw;
             }
         }

@@ -1,13 +1,13 @@
 ﻿using NexiPayout.ClientManagers;
-using NexiPayout.Framework.Interfaces;
 using NexiPayout.Framework.Logging;
 using NexiPayout.Models.Payouts;
+using Ninject;
 using NUnit.Framework;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace NexiPayout.Tests
 {
@@ -21,9 +21,15 @@ namespace NexiPayout.Tests
         private string V1Eendpoint = "report/v1/payouts";
         private string V2Eendpoint = "report/v2/payouts";
 
+        [SetUp]
+        public void InitializeDepencyInjection()
+        {
+            NinjectBinding.SetLogger();
+        }
+
         public void Setup(string endpoint)
         {
-            manager = new PayoutManager();
+            manager = new PayoutManager(NinjectBinding.PayoutLogger);
 
             payoutResponse = manager.GetAllPayouts(endpoint);
         }

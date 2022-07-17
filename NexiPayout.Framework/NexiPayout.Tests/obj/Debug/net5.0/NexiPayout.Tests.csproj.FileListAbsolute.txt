@@ -16,7 +16,6 @@ C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\b
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\bin\Debug\net5.0\NexiPayout.Framework.pdb
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\obj\Debug\net5.0\NexiPayout.Tests.csproj.CopyComplete
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\obj\Debug\net5.0\NexiPayout.Tests.dll
-C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\obj\Debug\net5.0\refint\NexiPayout.Tests.dll
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\obj\Debug\net5.0\NexiPayout.Tests.pdb
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\obj\Debug\net5.0\ref\NexiPayout.Tests.dll
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\bin\Debug\net5.0\testhost.exe
@@ -149,3 +148,5 @@ C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\b
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Diagnostics.EventLog.Messages.dll
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Diagnostics.EventLog.dll
 C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\bin\Debug\net5.0\payoutenv.json
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\bin\Debug\net5.0\ref\NexiPayout.Tests.dll
+C:\workspace\interview\NexiPayoutV5-repo\NexiPayout.Framework\NexiPayout.Tests\bin\Debug\net5.0\Ninject.dll
