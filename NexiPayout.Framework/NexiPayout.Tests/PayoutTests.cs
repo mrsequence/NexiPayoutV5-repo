@@ -25,6 +25,7 @@ namespace NexiPayout.Tests
         public void InitializeDepencyInjection()
         {
             NinjectBinding.SetLogger();
+            LoggerFactory.InitilizeLogger();
         }
 
         public void Setup(string endpoint)

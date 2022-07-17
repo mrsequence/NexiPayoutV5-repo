@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using Serilog.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace NexiPayout.Framework.Logging
             .WriteTo.Console()
             .CreateLogger();
         }
-        public static void DestructLogger(ILogger logger)
+        public static void DestructLogger()
         {
             Log.CloseAndFlush();
         }
