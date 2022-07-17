@@ -105,5 +105,11 @@ namespace NexiPayout.Tests
             }
 
         }
+
+        [TearDown]
+        public void TearDown()
+        {
+            LoggerFactory.DestructLogger();
+        }
     }
 }
