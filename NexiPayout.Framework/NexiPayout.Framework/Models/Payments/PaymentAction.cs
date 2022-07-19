@@ -1,9 +1,5 @@
 ﻿using NexiPayout.Models.Payouts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NexiPayout.Models.Payments
 {

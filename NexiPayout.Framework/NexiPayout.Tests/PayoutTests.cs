@@ -1,13 +1,11 @@
 ﻿using NexiPayout.ClientManagers;
 using NexiPayout.Framework.Logging;
 using NexiPayout.Models.Payouts;
-using Ninject;
 using NUnit.Framework;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 
 namespace NexiPayout.Tests
 {
